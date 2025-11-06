@@ -6,16 +6,7 @@ import java.io.InputStreamReader;
 import edu.seg2105.client.backend.ChatClient;
 import edu.seg2105.client.common.ChatIF;
 
-/**
- * ClientConsole handles UI input for the client.
- * Supports: #quit, #logoff, #login, #gethost, #getport
- * Includes a main(String[] args) so the runner can launch it directly.
- *
- * Args:
- *   args[0] = loginId   (REQUIRED)
- *   args[1] = host      (optional, default: "localhost")
- *   args[2] = port      (optional, default: 5555)
- */
+
 public class ClientConsole implements ChatIF {
 
   private ChatClient client;

@@ -1,0 +1,329 @@
+=================================================
+TEST 2001: Server startup (default port 5555)
+[SERVER OUT] Server listening for clients on port 5555
+[SERVER OUT] Server listening for clients on port 5555
+[SERVER OUT] Server listening for connections on port 5555
+[SERVER OUT] Server listening for connections on port 5555
+=================================================
+SERVER OUTPUT (2001)
+=================================================
+Server listening for clients on port 5555
+Server listening for clients on port 5555
+Server listening for connections on port 5555
+Server listening for connections on port 5555
+
+=================================================
+TEST 2002: Client startup without login
+[CLIENT-NO-LOGIN OUT] ERROR - No login ID specified.  Connection aborted.
+=================================================
+CLIENT OUTPUT (2002)
+=================================================
+ERROR - No login ID specified.  Connection aborted.
+
+=================================================
+TEST 2003: Client with login but no server
+[CLIENT-cora OUT] ERROR - Can't setup connection! Terminating client.
+=================================================
+CLIENT OUTPUT (2003)
+=================================================
+ERROR - Can't setup connection! Terminating client.
+
+=================================================
+TEST 2004: Client connection (default), login handshake
+[SERVER OUT] Server listening for clients on port 5555
+[SERVER OUT] Server listening for clients on port 5555
+[SERVER OUT] Server listening for connections on port 5555
+[SERVER OUT] Server listening for connections on port 5555
+[SERVER OUT] A new client has connected to the server.
+[SERVER OUT] Message received: #login cora from null.
+[SERVER OUT] cora has logged on.
+[CLIENT-cora OUT] cora has logged on.
+=================================================
+SERVER OUTPUT (2004)
+=================================================
+Server listening for clients on port 5555
+Server listening for clients on port 5555
+Server listening for connections on port 5555
+Server listening for connections on port 5555
+A new client has connected to the server.
+Message received: #login cora from null.
+cora has logged on.
+
+=================================================
+CLIENT OUTPUT (2004)
+=================================================
+cora has logged on.
+
+=================================================
+TEST 2005: Echo (client -> server -> all)
+[SERVER OUT] Server listening for clients on port 5555
+[SERVER OUT] Server listening for clients on port 5555
+[SERVER OUT] Server listening for connections on port 5555
+[SERVER OUT] Server listening for connections on port 5555
+[SERVER OUT] A new client has connected to the server.
+[SERVER OUT] Message received: #login cora from null.
+[SERVER OUT] cora has logged on.
+[CLIENT-cora OUT] cora has logged on.
+[SERVER OUT] Message received: hello from cora
+[CLIENT-cora OUT] cora> hello
+=================================================
+SERVER OUTPUT (2005)
+=================================================
+Server listening for clients on port 5555
+Server listening for clients on port 5555
+Server listening for connections on port 5555
+Server listening for connections on port 5555
+A new client has connected to the server.
+Message received: #login cora from null.
+cora has logged on.
+Message received: hello from cora
+
+=================================================
+CLIENT OUTPUT (2005)
+=================================================
+cora has logged on.
+cora> hello
+
+=================================================
+TEST 2006: Multiple clients + server broadcast
+[SERVER OUT] Server listening for clients on port 5555
+[SERVER OUT] Server listening for clients on port 5555
+[SERVER OUT] Server listening for connections on port 5555
+[SERVER OUT] Server listening for connections on port 5555
+[SERVER OUT] A new client has connected to the server.
+[SERVER OUT] Message received: #login a1 from null.
+[SERVER OUT] a1 has logged on.
+[CLIENT-a1 OUT] a1 has logged on.
+[SERVER OUT] A new client has connected to the server.
+[SERVER OUT] Message received: #login a2 from null.
+[SERVER OUT] a2 has logged on.
+[CLIENT-a2 OUT] a2 has logged on.
+[SERVER OUT] Message received: hi from a1 from a1
+[CLIENT-a1 OUT] a1> hi from a1
+[CLIENT-a2 OUT] a1> hi from a1
+[SERVER OUT] Message received: hi from a2 from a2
+[CLIENT-a1 OUT] a2> hi from a2
+[CLIENT-a2 OUT] a2> hi from a2
+[SERVER OUT] SERVER MESSAGE> hello all
+[CLIENT-a2 OUT] SERVER MESSAGE> hello all
+[CLIENT-a1 OUT] SERVER MESSAGE> hello all
+=================================================
+SERVER OUTPUT (2006)
+=================================================
+Server listening for clients on port 5555
+Server listening for clients on port 5555
+Server listening for connections on port 5555
+Server listening for connections on port 5555
+A new client has connected to the server.
+Message received: #login a1 from null.
+a1 has logged on.
+A new client has connected to the server.
+Message received: #login a2 from null.
+a2 has logged on.
+Message received: hi from a1 from a1
+Message received: hi from a2 from a2
+SERVER MESSAGE> hello all
+
+=================================================
+CLIENT a1 OUTPUT (2006)
+=================================================
+a1 has logged on.
+a1> hi from a1
+a2> hi from a2
+SERVER MESSAGE> hello all
+
+=================================================
+CLIENT a2 OUTPUT (2006)
+=================================================
+a2 has logged on.
+a1> hi from a1
+a2> hi from a2
+SERVER MESSAGE> hello all
+
+=================================================
+TEST 2007: Server #quit
+[SERVER OUT] Server listening for clients on port 5555
+[SERVER OUT] Server listening for clients on port 5555
+[SERVER OUT] Server listening for connections on port 5555
+[SERVER OUT] Server listening for connections on port 5555
+[SERVER OUT] Server stopped.
+=================================================
+SERVER OUTPUT (2007)
+=================================================
+Server listening for clients on port 5555
+Server listening for clients on port 5555
+Server listening for connections on port 5555
+Server listening for connections on port 5555
+Server stopped.
+
+=================================================
+TEST 2008: #stop then #close, client notices shutdown
+[SERVER OUT] Server listening for clients on port 5555
+[SERVER OUT] Server listening for clients on port 5555
+[SERVER OUT] Server listening for connections on port 5555
+[SERVER OUT] Server listening for connections on port 5555
+[SERVER OUT] A new client has connected to the server.
+[SERVER OUT] Message received: #login bibi from null.
+[SERVER OUT] bibi has logged on.
+[CLIENT-bibi OUT] bibi has logged on.
+[SERVER OUT] Server has stopped listening for connections.
+[SERVER OUT] Server stopped.
+[CLIENT-bibi OUT] SERVER MESSAGE> The server is closing.
+[SERVER OUT] SERVER MESSAGE> The server is closing.
+[SERVER OUT] bibi has disconnected.
+[CLIENT-bibi OUT] The server has shut down.
+=================================================
+SERVER OUTPUT (2008)
+=================================================
+Server listening for clients on port 5555
+Server listening for clients on port 5555
+Server listening for connections on port 5555
+Server listening for connections on port 5555
+A new client has connected to the server.
+Message received: #login bibi from null.
+bibi has logged on.
+Server has stopped listening for connections.
+Server stopped.
+SERVER MESSAGE> The server is closing.
+bibi has disconnected.
+
+=================================================
+CLIENT OUTPUT (2008)
+=================================================
+bibi has logged on.
+SERVER MESSAGE> The server is closing.
+The server has shut down.
+
+=================================================
+TEST 2009: Server restart (#close, #start) and connect
+[SERVER OUT] Server listening for clients on port 5555
+[SERVER OUT] Server listening for clients on port 5555
+[SERVER OUT] Server listening for connections on port 5555
+[SERVER OUT] Server listening for connections on port 5555
+[SERVER OUT] SERVER MESSAGE> The server is closing.
+[SERVER OUT] Server stopped.
+[SERVER OUT] Server listening for connections on port 5555
+[SERVER OUT] Server listening for clients on port 5555
+[SERVER OUT] Server listening for connections on port 5555
+[SERVER OUT] A new client has connected to the server.
+[SERVER OUT] Message received: #login didi from null.
+[SERVER OUT] didi has logged on.
+[CLIENT-didi OUT] didi has logged on.
+=================================================
+SERVER OUTPUT (2009)
+=================================================
+Server listening for clients on port 5555
+Server listening for clients on port 5555
+Server listening for connections on port 5555
+Server listening for connections on port 5555
+SERVER MESSAGE> The server is closing.
+Server stopped.
+Server listening for connections on port 5555
+Server listening for clients on port 5555
+Server listening for connections on port 5555
+A new client has connected to the server.
+Message received: #login didi from null.
+didi has logged on.
+
+=================================================
+CLIENT OUTPUT (2009)
+=================================================
+didi has logged on.
+
+=================================================
+TEST 2010: Client #quit
+[SERVER OUT] Server listening for clients on port 5555
+[SERVER OUT] Server listening for clients on port 5555
+[SERVER OUT] Server listening for connections on port 5555
+[SERVER OUT] Server listening for connections on port 5555
+[SERVER OUT] A new client has connected to the server.
+[SERVER OUT] Message received: #login lola from null.
+[SERVER OUT] lola has logged on.
+[CLIENT-lola OUT] lola has logged on.
+=================================================
+SERVER OUTPUT (2010)
+=================================================
+Server listening for clients on port 5555
+Server listening for clients on port 5555
+Server listening for connections on port 5555
+Server listening for connections on port 5555
+A new client has connected to the server.
+Message received: #login lola from null.
+lola has logged on.
+
+=================================================
+CLIENT OUTPUT (2010)
+=================================================
+lola has logged on.
+
+=================================================
+TEST 2011: Client #logoff
+[SERVER OUT] Server listening for clients on port 5555
+[SERVER OUT] Server listening for clients on port 5555
+[SERVER OUT] Server listening for connections on port 5555
+[SERVER OUT] Server listening for connections on port 5555
+[SERVER OUT] A new client has connected to the server.
+[SERVER OUT] Message received: #login mimi from null.
+[SERVER OUT] mimi has logged on.
+[CLIENT-mimi OUT] mimi has logged on.
+[CLIENT-mimi OUT] Connection closed.
+=================================================
+SERVER OUTPUT (2011)
+=================================================
+Server listening for clients on port 5555
+Server listening for clients on port 5555
+Server listening for connections on port 5555
+Server listening for connections on port 5555
+A new client has connected to the server.
+Message received: #login mimi from null.
+mimi has logged on.
+
+=================================================
+CLIENT OUTPUT (2011)
+=================================================
+mimi has logged on.
+Connection closed.
+
+=================================================
+TEST 2012: Server on custom port 1234
+[SERVER OUT] Server listening for clients on port 1234
+[SERVER OUT] Server listening for clients on port 1234
+[SERVER OUT] Server listening for connections on port 1234
+[SERVER OUT] Server listening for connections on port 1234
+=================================================
+SERVER OUTPUT (2012)
+=================================================
+Server listening for clients on port 1234
+Server listening for clients on port 1234
+Server listening for connections on port 1234
+Server listening for connections on port 1234
+
+=================================================
+TEST 2013: Client connects to custom port 1234
+[SERVER OUT] Server listening for clients on port 1234
+[SERVER OUT] Server listening for clients on port 1234
+[SERVER OUT] Server listening for connections on port 1234
+[SERVER OUT] Server listening for connections on port 1234
+[SERVER OUT] A new client has connected to the server.
+[SERVER OUT] Message received: #login nini from null.
+[SERVER OUT] nini has logged on.
+[CLIENT-nini OUT] nini has logged on.
+=================================================
+SERVER OUTPUT (2013)
+=================================================
+Server listening for clients on port 1234
+Server listening for clients on port 1234
+Server listening for connections on port 1234
+Server listening for connections on port 1234
+A new client has connected to the server.
+Message received: #login nini from null.
+nini has logged on.
+
+=================================================
+CLIENT OUTPUT (2013)
+=================================================
+nini has logged on.
+
+=================================================
+Done. Scroll up to compare each block with your expected wording.
+=================================================

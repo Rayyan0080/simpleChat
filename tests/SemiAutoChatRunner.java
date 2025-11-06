@@ -4,15 +4,10 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-/**
- * Semi-automated test runner for SEG2105 SimpleChat.
- * Spawns your real ServerConsole and ClientConsole, sends commands,
- * and prints captured output for manual comparison.
- */
+
 public class SemiAutoChatRunner {
 
-    // ====== UPDATE THESE IF YOUR PROJECT NAMES DIFFER ======
-    // Run this from the simpleChat project. Eclipse usually uses "bin" as output.
+    
     private static final String CLASS_PATH =
             "bin" + File.pathSeparator +                // simpleChat/bin
             ".." + File.separator + "OCSF" + File.separator + "bin" + // OCSF/bin (adjust if your project name differs)
